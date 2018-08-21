@@ -57,7 +57,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
     (0, uint256("00000dfdec6a9190b26520e93ef5eba15a82646a47ddf8fb5be4477a836467ee"));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1534464000, // * UNIX timestamp of last checkpoint block
+    1534838400, // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
@@ -67,7 +67,7 @@ static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
     boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataTestnet = {
     &mapCheckpointsTestnet,
-    1534464000,
+    1534838400,
     0,
     250};
 
@@ -75,7 +75,7 @@ static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
     boost::assign::map_list_of(0, uint256("0x001"));
 static const Checkpoints::CCheckpointData dataRegtest = {
     &mapCheckpointsRegtest,
-    1534464000,
+    1534838400,
     0,
     100};
 
@@ -91,11 +91,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x6e;
-        pchMessageStart[1] = 0x72;
-        pchMessageStart[2] = 0x4f;
-        pchMessageStart[3] = 0x5a;
-        vAlertPubKey = ParseHex("040d75796902e3eda97815d744328237872309a95b42a74b22d7580e56b086fbc19ae1d6ef30c9e27d060c9c48692a663b9a321161e19f853ca6a6499cba7d17f6");
+        pchMessageStart[0] = 0xf8;
+        pchMessageStart[1] = 0xa8;
+        pchMessageStart[2] = 0x6c;
+        pchMessageStart[3] = 0x3b;
+        vAlertPubKey = ParseHex("041babfe7f012d2a85edac110ebdfaff0f4c5fdea78ec811703d921de824d5979eea2aea703b15bda37c7add3248fb85f89a5c45cfafe85b78af33905613a95a52");
         nDefaultPort = 39777;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // ValinorCoin starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
@@ -123,18 +123,18 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "This is a coin for the Valinor economic game system, built on a chain of blocks!";
+        const char* pszTimestamp = "It is a coin for an economic game system built on the chain of Valinorcoin blocks!";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("0457c56ed69a1f42398804504fcab82f430cc864c8fc8cd25b76e141d12c13012ee9d500e11f84d5f75f5c669e88ca196142ddb7406d3635d840fa5e9d2a6bb100") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("041d48655001ae04279873e10eb53c164c49d08d09c573e77ed91eb41605840b7d1981b2820ef820c0c36766d6a0749cdf41f7d7208085537f3957401d3bd07e34") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1534464000;
+        genesis.nTime = 1534838400;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 2394236;
 
@@ -142,8 +142,8 @@ public:
         assert(hashGenesisBlock == uint256("00000dfdec6a9190b26520e93ef5eba15a82646a47ddf8fb5be4477a836467ee"));
         assert(genesis.hashMerkleRoot == uint256("98a0c0dc8214278a8a27ce9d7ca4107dd7cd6787ea6001d3d6c1a7b764098570"));
 
-        vSeeds.push_back(CDNSSeedData("80.211.202.181", "80.211.202.181"));         // Single node address
-        vSeeds.push_back(CDNSSeedData("94.177.187.54", "94.177.187.54"));           // Single node address
+        vSeeds.push_back(CDNSSeedData("89.223.89.251", "89.223.89.251"));         // Single node address
+        vSeeds.push_back(CDNSSeedData("89.223.89.252", "89.223.89.252"));           // Single node address
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 49);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
@@ -166,10 +166,10 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "04b8a44c0467e07b59aacede1352cff10d7f194b1a09bd1bc62847b3e29f9f0a340ddc8f9c29423f27e0ec3b29e6b1f9127db303b0cad8f3b83ab8b1b52f61bac4";
+        strSporkKey = "04a800fd21d66d68fb5ca725403cabed0af5b8b3940912ad09324d9cabe140c507829b68faa231c4f6a7f6761df69bdbdce5d86d78f34cbbb74d1339036b6d91c5";
         strObfuscationPoolDummyAddress = "Lo3fnibtjwvqYE1T7Lce5uYbdt3pf6PKUu";
 		
-        nStartMasternodePayments = 1534464000; //Wed, 25 Jun 2014 20:36:16 GMT
+        nStartMasternodePayments = 1534838400; //Wed, 25 Jun 2014 20:36:16 GMT
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -189,11 +189,11 @@ public:
     {
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
-        pchMessageStart[0] = 0x41;
-        pchMessageStart[1] = 0x4d;
-        pchMessageStart[2] = 0x5e;
-        pchMessageStart[3] = 0x78;
-        vAlertPubKey = ParseHex("043e8760d1c9ef3af5a5e49796afe4389a5cb53c6028b54b9af0a152f34762e453615a1aab9260a31045b85f87d4de36bbe6fd04478fcc103fd47c8e1b813c3d3c");
+        pchMessageStart[0] = 0x05;
+        pchMessageStart[1] = 0xcf;
+        pchMessageStart[2] = 0x23;
+        pchMessageStart[3] = 0x7f;
+        vAlertPubKey = ParseHex("04d34163a727480c3e094f181975a3491873fdbfe689044480faa5f684731403a85434736aaa45c60093ab79eb9a7d72cb27461416dc8c837e7ea7a83ede23f3bd");
         nDefaultPort = 39775;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
@@ -209,7 +209,7 @@ public:
         nMaxMoneyOut = 43199500 * COIN;
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1534464000;
+        genesis.nTime = 1534838400;
         genesis.nNonce = 2394236;
 
         hashGenesisBlock = genesis.GetHash();
@@ -218,8 +218,8 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 /*
-        vSeeds.push_back(CDNSSeedData("80.211.202.181", "80.211.202.181"));         // Single node address
-        vSeeds.push_back(CDNSSeedData("94.177.187.54", "94.177.187.54"));           // Single node address
+        vSeeds.push_back(CDNSSeedData("89.223.89.251", "89.223.89.251"));         // Single node address
+        vSeeds.push_back(CDNSSeedData("89.223.89.252", "89.223.89.252"));           // Single node address
 */
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 139); // Testnet valinorcoin addresses start with 'x' or 'y'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);  // Testnet valinorcoin script addresses start with '8' or '9'
@@ -243,9 +243,9 @@ public:
         fTestnetToBeDeprecatedFieldRPC = true;
 
         nPoolMaxTransactions = 2;
-        strSporkKey = "04cded1204a57acd6280c8499b7a2df052609dbf96546453984d632204d651d72a37013edc9d115e5a385e100eb7e867923fdd0bb7d9dc31aa1eb9d59b00c76697";
+        strSporkKey = "04ca864ee5e01ddf5ec4db13d7df059ce12741a9c90fb68ba2c84695b1d2217b143fbb86c9e7cd37a27161b1da170ed12b1d7ecfb8d84b70ebd2eab29f9871d556";
         strObfuscationPoolDummyAddress = "xxVKdbxVogrXrPLMo2qEEyCm1GRv2KZCLy";
-        nStartMasternodePayments = 1534464000; //Fri, 09 Jan 2015 21:05:58 GMT
+        nStartMasternodePayments = 1534838400; //Fri, 09 Jan 2015 21:05:58 GMT
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
@@ -265,10 +265,10 @@ public:
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
         strNetworkID = "regtest";
-        pchMessageStart[0] = 0x2d;
-        pchMessageStart[1] = 0x53;
-        pchMessageStart[2] = 0x6f;
-        pchMessageStart[3] = 0x40;
+        pchMessageStart[0] = 0xde;
+        pchMessageStart[1] = 0xca;
+        pchMessageStart[2] = 0x4b;
+        pchMessageStart[3] = 0x0d;
         nSubsidyHalvingInterval = 150;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
@@ -277,7 +277,7 @@ public:
         nTargetTimespan = 24 * 60 * 60; // ValinorCoin: 1 day
         nTargetSpacing = 1 * 60;        // ValinorCoin: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
-        genesis.nTime = 1534464000;
+        genesis.nTime = 1534838400;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 906460;
 
