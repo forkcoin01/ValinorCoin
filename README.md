@@ -19,7 +19,7 @@ Installation of libraries (using root user):
 Cloning the repository and compiling (use any user with the sudo group):
 
     cd
-    git clone https://github.com/ValinorCoin/ValinorPayCoin.git
+    git clone https://github.com/ValinorCoin/ValinorCoin.git
     cd ValinorCoin
     ./autogen.sh
     ./configure
@@ -45,7 +45,7 @@ Demon status:
 
 All binaries for different operating systems, you can download in the releases repository:
 
-https://github.com/ValinorCoin/ValinorPayCoin/releases
+https://github.com/ValinorCoin/ValinorCoin/releases
 
 P2P port: 39777, RPC port: 39778
 -
